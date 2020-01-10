@@ -1,0 +1,19 @@
+.navbar {
+  height: 10%;
+  background-color: black;
+  text-align: center;
+  color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.navbar > p {
+  font-size: 1.2rem;
+}
+
+.logo {
+  height: 20px;
+  position: absolute;
+  left: 50px;
+}

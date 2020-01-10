@@ -1,0 +1,37 @@
+.mainbody {
+  background-image: none;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.bg-container {
+  width: 100vw;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: -1;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.bg-img {
+  width: 110%;
+  margin: 0% -4% -6%;
+}
+
+.mid-container {
+  background-color: white;
+  width: 450px;
+  height: 600px; // height is fixed
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.mid-container > p{
+  font-size: 2rem;
+  color: $blue;
+}

@@ -14,10 +14,14 @@ module.exports = {
       loader: 'babel-loader',
       test: /\.js$/, // inside is the regular expression
       exclude: /node_modules/
-    },{
-      use: ['style-loader', 'css-loader', 'sass-loader'],  // multiple loaders
-      test: /\.scss$/ // inside is the regular expression
-    }
+    }, {
+      test: /\.scss$/,
+      use: [
+        'style-loader',
+        'css-loader',
+        'sass-loader'
+      ]  // use to handle multiple loaders
+    },
   ]
   }
 }
