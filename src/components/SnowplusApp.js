@@ -4,16 +4,17 @@ import FormPage from './FormPage';
 export default class SnowplusApp extends React.Component {
   constructor (props) {
     super(props);
-    this.onFormSubmit = this.onFormSubmit.bind(this);
 
     this.state = {
       isSubmitted: false,
       isConfirmed: false
-    }
+    };
+
+    this.onFormSubmit = this.onFormSubmit.bind(this);
   }
 
-  onFormSubmit (event) {
-    console.log(event);
+  onFormSubmit(event) {
+    console.log(event.target.action);
   }
   render() {
     return (
@@ -33,17 +34,3 @@ export default class SnowplusApp extends React.Component {
     )
   }
 }
-
-
-// {
-//   !this.state.isSubmitted && !this.state.isConfirmed &&
-//   <FormPage />
-// }
-// {
-//   this.state.isSubmitted && !this.state.isConfirmed &&
-//   <SubmitPage />
-// }
-// {
-//   this.state.isSubmitted && this.state.isConfirmed &&
-//   <ConfirmPage />
-// }

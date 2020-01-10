@@ -1,1 +1,47 @@
+.modal {
+  position: fixed;
+  bottom: 0px;
+  background-color: white;
+  width: 70%;
+  left: 15%;
+  border: 2px solid $light-grey;
+  padding-left: 15px;
+  padding-right: 15px;
+}
 
+.btn-text {
+  background-color: none;
+  border: none;
+  color: $blue;
+  display: inline-block;
+}
+
+.option {
+  height: 40px;
+  font-size: 1.2rem;
+  border: none;
+  border-bottom: 1px solid $light-grey;
+  padding: 15px;
+}
+
+option :hover {
+  background-color: $light-grey;
+}
+
+.radio {
+  width: 30px;
+  height: 30px;
+  margin: 0;
+}
+
+.datepicker-navbar > a {
+  font-size: 1.5rem;
+}
+
+.datepicker.ios .datepicker-navbar-btn {
+  color: $blue;
+}
+
+.datepicker.ios .datepicker-content {
+  padding-top: 60px;
+}
