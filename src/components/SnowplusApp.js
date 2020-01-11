@@ -10,8 +10,7 @@ export default class SnowplusApp extends React.Component {
       isSubmitted: false,
       isConfirmed: false,
       submitErrorMsg: '',
-      verifiedEmail: '',
-      verifiedCode: ''
+      verifiedEmail: ''
     };
 
     this.onFormSubmit = this.onFormSubmit.bind(this);
@@ -28,7 +27,6 @@ export default class SnowplusApp extends React.Component {
       isConfirmed: false,
       submitErrorMsg: '',
       verifiedEmail: '',
-      verifiedCode: ''
     })
   }
 
@@ -44,40 +42,36 @@ export default class SnowplusApp extends React.Component {
       vendor_name: formData.vendor_name
     };
 
-    // create a new XMLHttpRequest
-    var xhr = new XMLHttpRequest();
-    // get a callback when the server responds
-    xhr.onload = () => {
-      // update the state of the component with the result here
-      console.log(JSON.parse(xhr.responseText))
-      const verifyRes = JSON.parse(xhr.responseText).status;
-      if (verifyRes) {
-        this.setState({
-          isSubmitted: true,
-          submitErrorMsg: '',
-          verifiedEmail: verifyData.email
-        })
-      } else {
-        const errMsg = JSON.parse(xhr.responseText).error.errMsg;
-        this.setState({submitErrorMsg: errMsg})
+    fetch('http://dev.berminal.tech/snowplus/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(verifyData) // body data type must match "Content-Type" header
+    })
+    .then(res => res.json())
+    .then((response) => {
+      if (!response.status) {
+        throw new Error(response.error.errMsg);
       }
-    };
-    // open the request with the verb and the url
-    xhr.open('POST', 'http://dev.berminal.tech/snowplus/submit')
-    // send the request
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send(JSON.stringify(verifyData));
+
+      this.setState({
+        isSubmitted: true,
+        submitErrorMsg: '',
+        verifiedEmail: verifyData.email
+      });
+    })
+    .catch((error) => {
+      const errMsg = error.message;
+      this.setState({
+        submitErrorMsg: errMsg
+      })
+    });
   }
 
   render() {
     return (
-      <div>
-        <div className="bg-container"><img className="bg-img" src="/assets/images/background.png"></img></div>
-        <div className="navbar">
-          {!this.state.isSubmitted && <img className="logo" src="/assets/images/snowplus_logo.svg"></img>}
-          <p>SnowPlus Giveaway!</p>
-        </div>
-        <div className="mainbody">
+      <div className="mainbody">
         { this.state.submitErrorMsg && <p className="errMsg">{this.state.submitErrorMsg}</p>}
         {
           !this.state.isSubmitted && !this.state.isConfirmed &&
@@ -92,7 +86,6 @@ export default class SnowplusApp extends React.Component {
             handleBackHome={this.handleBackHome}
           />
         }
-        </div>
       </div>
     )
   }
