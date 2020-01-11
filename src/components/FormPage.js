@@ -7,21 +7,32 @@ export default class FormPage extends React.Component {
     super(props);
 
     this.state = {
+      name: '',
+      vendor_name: '',
+      email: '',
       gender: '',
       birthday: undefined,
       birthdayDisplay: '',
       showGenderModal: false,
       showDobModal: false
-    }
+    };
+
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handlePopUp = this.handlePopUp.bind(this);
     this.handleGenderSelect = this.handleGenderSelect.bind(this);
     this.handleDobSelect = this.handleDobSelect.bind(this);
   }
 
+  get isFormValid() {
+    return !!this.state.name && !!this.state.email && !!this.state.gender & !!this.state.birthdayDisplay;
+  }
+
   handleInputChange(event) {
-    const target = event.target;
-    this.setState({[target.name]: target.value});
+    event.persist();
+    if (event.target.validity.valid) {
+      const target = event.target;
+      this.setState({[target.name]: target.value});
+    }
   };
 
   handlePopUp(event) {
@@ -34,11 +45,10 @@ export default class FormPage extends React.Component {
     }
   }
 
-  handleGenderSelect(event) {
-    event.preventDefault();
+  handleGenderSelect(value) {
     this.setState({
       showGenderModal: false,
-      gender: event.target.value
+      gender: value
     });
   }
 
@@ -58,15 +68,18 @@ export default class FormPage extends React.Component {
 
   render () {
     return (
-      <div className="mid-container">
-        <p>Special Gift for You!</p>
-        <form onSubmit={this.props.onFormSubmit}>
-          <input className="form-input" type="text" id="name" name="name" placeholder="Name" required />
+      <div className="mid-container column-container">
+        <p className="formTitle">Special Gift for You!</p>
+        <form>
+          <input className="form-input" type="text" id="name" name="name" placeholder="Name" required
+            onChange={this.handleInputChange}
+          />
           <input className="form-input" type="text" id="dob" name="birthday" placeholder="Date Of Birth"
             value={this.state.birthdayDisplay}
             readOnly
             onClick={this.handlePopUp}
-            required />
+            required
+          />
           {
             this.state.showDobModal &&
             <DobModal
@@ -85,11 +98,19 @@ export default class FormPage extends React.Component {
             <GenderModal
               handleGenderSelect={this.handleGenderSelect}
               showGenderModal={this.state.showGenderModal}
+              gender={this.state.gender}
             />
           }
-          <input className="form-input" type="text" id="vender" name="vender_name" placeholder="Vender" required />
-          <input className="form-input" type="email" id="email" name="email" placeholder="Email" required />
-          <button className="button-bg">Get Gift</button>
+          <input className="form-input" type="text" id="vender" name="vendor_name" placeholder="Vendor"
+            onChange={this.handleInputChange}
+          />
+          <input className="form-input" type="email" id="email" name="email" placeholder="Email" required
+            onChange={this.handleInputChange}
+          />
+          <button type="button" className="button-bg"
+            disabled={!this.isFormValid}
+            onClick={() => this.props.onFormSubmit(this.state)}
+          >Get Gift</button>
         </form>
       </div>
     )

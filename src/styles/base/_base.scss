@@ -1,5 +1,18 @@
 // font family
+@font-face {
+  font-family: "Mont-Regular";
+  src: url("/assets/fonts/Mont-Regular.otf") format("opentype");
+}
 
+@font-face {
+  font-family: "Mont-Bold";
+  src: url("/assets/fonts/Mont-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Mont-SemiBold";
+  src: url("/assets/fonts/Mont-SemiBold.otf") format("opentype");
+}
 
 // colors
 $blue: #64c8fa;

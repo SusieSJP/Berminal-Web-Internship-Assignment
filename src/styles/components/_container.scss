@@ -15,7 +15,6 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 100%;
 }
 
 .space-between {
@@ -37,18 +36,18 @@
   margin: 0% -4% -6%;
 }
 
+.ok-img {
+  width: 160.40px;
+  height: 160.40px;
+  margin-top: 124.80px;
+}
+
 .mid-container {
   background-color: white;
-  width: 450px;
-  height: 600px; // height is fixed
+  width: 600px;
+  height: 789.20px; // height is fixed
   margin-top: 50px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   position: relative;
 }
 
-.mid-container > p{
-  font-size: 2rem;
-  color: $blue;
-}
+
