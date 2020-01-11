@@ -2,11 +2,20 @@
   position: fixed;
   bottom: 0px;
   background-color: white;
-  width: 70%;
-  left: 15%;
-  border: 2px solid $light-grey;
+  width: 800px;
+  left: 50%;
+  margin-left: -400px;
   padding-left: 15px;
   padding-right: 15px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background: $overlay-grey;
 }
 
 .btn-text {
@@ -18,20 +27,23 @@
 
 .option {
   height: 40px;
-  font-size: 1.2rem;
+  font-size: 20px;
+  line-height: 30px;
   border: none;
-  border-bottom: 1px solid $light-grey;
+  border-bottom: 1px solid $overlay-grey;
   padding: 15px;
 }
 
 .option:hover {
-  background-color: $light-grey;
+  background-color: $pale-grey;
 }
 
 .radio {
   width: 30px;
   height: 30px;
   margin: 0;
+}
+.radio:checked {
   background-color: $blue;
 }
 

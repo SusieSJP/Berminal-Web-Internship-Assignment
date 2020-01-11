@@ -1,5 +1,5 @@
 .navbar {
-  height: 10%;
+  height: 72px;
   background-color: black;
   text-align: center;
   color: white;
@@ -9,11 +9,13 @@
 }
 
 .navbar > p {
-  font-size: 1.2rem;
+  font-size: 20px;
+  font-family: "Mont-Bold";
+  line-height: 24px;
 }
 
 .logo {
-  height: 20px;
+  height: 18px;
   position: absolute;
-  left: 50px;
+  left: 72px;
 }

@@ -17,6 +17,7 @@ export default class SnowplusApp extends React.Component {
     this.handleBackHome = this.handleBackHome.bind(this);
   }
 
+  // pad leading zeros to fixed length.
   padZero(num, length = 2) {
     return num.toString().padStart(length, '0');
   }
@@ -24,7 +25,6 @@ export default class SnowplusApp extends React.Component {
   handleBackHome() {
     this.setState({
       isSubmitted: false,
-      isConfirmed: false,
       submitErrorMsg: '',
       verifiedEmail: '',
     })
@@ -47,7 +47,7 @@ export default class SnowplusApp extends React.Component {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(verifyData) // body data type must match "Content-Type" header
+      body: JSON.stringify(verifyData)
     })
     .then(res => res.json())
     .then((response) => {
@@ -74,13 +74,13 @@ export default class SnowplusApp extends React.Component {
       <div className="mainbody">
         { this.state.submitErrorMsg && <p className="errMsg">{this.state.submitErrorMsg}</p>}
         {
-          !this.state.isSubmitted && !this.state.isConfirmed &&
+          !this.state.isSubmitted &&
           <FormPage
             onFormSubmit={this.onFormSubmit}
           />
         }
         {
-          this.state.isSubmitted && !this.state.isConfirmed &&
+          this.state.isSubmitted &&
           <SubmitPage
             email={this.state.verifiedEmail}
             handleBackHome={this.handleBackHome}

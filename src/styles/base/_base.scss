@@ -15,6 +15,7 @@
 }
 
 // colors
-$blue: #64c8fa;
-$light-grey: darken(#f5f5f5, 10%);
-$smoke-grey: darken(#f5f5f5, 25%);
+$blue: #64c8fa; // button, title
+$pale-grey:#dedede; // for the underline in the form
+$light-grey: #b2b2b2; // for the placeholder in the form
+$overlay-grey: rgba(0, 0, 0, 0.6); // for the overlay of modal

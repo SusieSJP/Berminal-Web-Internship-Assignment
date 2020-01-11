@@ -7,6 +7,7 @@ const GenderModal = (props) => (
     contentLabel="Selected Gender"
     appElement={document.getElementById('app')}
     className="modal"
+    overlayClassName="overlay"
   >
     <div className="column-container">
       <div className="row-container space-between option"

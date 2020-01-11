@@ -27,14 +27,15 @@ const ConfirmPage = () => {
       }
     })
     .catch((error) => {
-      setErrMsg(error.message)
+      setErrMsg(error.message);
     });
   }, []);
+  console.log('errMsg: ', errMsg);
 
   return (
-    <div>
-      { errMsg && <div className="codeExpire-container"><p>Error: { errMsg }</p></div> }
-      { !errMsg &&
+    !!errMsg ? <div className="codeExpire-container"><p>Error: { errMsg }</p></div> :
+    (
+      <div className="mainbody">
         <div className="mid-container column-container">
           <img className="ok-img" src="/assets/images/ok.svg"></img>
           <p className="msgTitle">Congratulations!</p>
@@ -45,8 +46,8 @@ const ConfirmPage = () => {
           <button className="button-bg"
           >Back to Home</button>
         </div>
-      }
-    </div>
+      </div>
+    )
   );
 }
 

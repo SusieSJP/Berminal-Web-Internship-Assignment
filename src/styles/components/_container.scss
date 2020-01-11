@@ -31,22 +31,11 @@
   object-fit: cover;
 }
 
-.bg-img {
-  width: 110%;
-  margin: 0% -4% -6%;
-}
-
-.ok-img {
-  width: 160.40px;
-  height: 160.40px;
-  margin-top: 124.80px;
-}
-
 .mid-container {
   background-color: white;
   width: 600px;
   height: 789.20px; // height is fixed
-  margin-top: 50px;
+  margin-top: 80px;
   position: relative;
 }
 
@@ -61,6 +50,10 @@
   font-size: 1.2rem;
   color: white;
   text-align: center;
+}
+
+.center {
+  margin-left: 20%;
 }
 
 
