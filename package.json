@@ -7,7 +7,8 @@
   "scripts": {
     "serve": "live-server public",
     "dev-server": "webpack-dev-server",
-    "build": "webpack --watch"
+    "build": "webpack --watch",
+    "deploy": "aws s3 sync public/ s3://snow-plus-bucket --acl public-read"
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
